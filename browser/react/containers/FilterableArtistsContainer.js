@@ -8,18 +8,25 @@ class FilterableArtistsContainer extends React.Component {
     this.state = {
       currentFilterValue: ''
     }
+    this.filteredArtist = []
   }
 
   componentDidMount () {
+    console.log('Here, Zach: ', this.state.currentFilterValue)
 
+//build a filter function(this.state.currentFilterValue)
   }
-
+  updateFilterValue(val) {
+    console.log('Val: ', val)
+    this.setState({
+      currentFilterValue: val
+    })
+  }
   render () {
     return (
       <div>
-        <FilterInput onChange={event => event.target.value} />
-          // ^ START HERE. Props
-        <Artists artists={props.artists} />
+        <FilterInput onChange={event => this.updateFilterValue(event.target.value)} />
+        <Artists artists={this.filteredArtist} />
       </div>
     );
   }
